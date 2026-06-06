@@ -503,3 +503,140 @@ tr:hover td {
 .mt-4 {
   margin-top: 1rem;
 }
+
+/* --- MOBILE RESPONSIVENESS & HAMBURGER MENU --- */
+
+.hamburger {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1000;
+  outline: none;
+}
+
+.hamburger-box {
+  width: 24px;
+  height: 18px;
+  display: inline-block;
+  position: relative;
+}
+
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+  width: 24px;
+  height: 2px;
+  background-color: var(--text-primary);
+  position: absolute;
+  border-radius: 4px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.hamburger-inner {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hamburger-inner::before {
+  content: "";
+  top: -8px;
+  left: 0;
+}
+
+.hamburger-inner::after {
+  content: "";
+  bottom: -8px;
+  left: 0;
+}
+
+/* Hamburger active transformation to form an 'X' */
+.hamburger.is-active .hamburger-inner {
+  transform: rotate(45deg);
+}
+
+.hamburger.is-active .hamburger-inner::before {
+  opacity: 0;
+}
+
+.hamburger.is-active .hamburger-inner::after {
+  transform: translateY(-8px) rotate(-90deg);
+}
+
+/* Media Queries for Tablet and Phone Screens */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 1.5rem;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100vh;
+    background-color: var(--bg-secondary);
+    border-left: 1px solid var(--border-color);
+    flex-direction: column;
+    padding: 6rem 1.5rem 1.5rem;
+    gap: 0.75rem;
+    z-index: 999;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.6);
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .nav-links.open {
+    transform: translateX(0);
+  }
+
+  .nav-link {
+    width: 100%;
+    text-align: left;
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+  }
+
+  /* Form spacing and modal scaling on mobile */
+  .modal-content {
+    width: 92%;
+    margin: 0 auto;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  /* Compact grid displays for small screens */
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  td, th {
+    padding: 0.75rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .order-item-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .order-item-row .form-group {
+    width: 100%;
+  }
+}
+
